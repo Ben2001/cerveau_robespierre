@@ -1,7 +1,6 @@
 require 'bundler'
 Bundler.require
 require 'sinatra'
-Dotenv.load
 require './model_vote'
 require './model_tweet'
 require './track.rb'

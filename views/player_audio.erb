@@ -1,7 +1,5 @@
-
-<div class="col-md-3">
-
-	<div class="panel panel-default">
+<div class="col-md-10 col-md-offset-1">
+	<div class="panel_custom panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Player Audio</h3>
 		</div>
@@ -11,22 +9,24 @@
 			<input type="submit" >
 		</form>
 
-		<div id="playlist">
+		<div>
 			<form method="post" action="/say">
-			<ul id="my-tracks" class="my-playlist">
-				<% @tracks.each do |track| %>
-				<li>
-					<input type="checkbox" class="to-my-playlist" name="sentences[]" value="<%= track.lien%>"/>
-					<span class="my-song" data-lien="<%= track.lien %>"><%= track.title %></span>
-					<a href="#" class="remove-my-song pull-right">x</a>
-					<hr class="hr_track" />
-				</li>
-				<% end %>
-			</ul>
-			<input id="play" type="submit" name="play">
+				<div id="playlist" class="panel-body">
+					<ul id="my-tracks" class="my-playlist">
+						<% @tracks.each do |track| %>
+						<li>
+							<input type="checkbox" class="to-my-playlist" name="sentences[]" value="<%= track.lien%>"/>
+							<span class="my-song" data-lien="<%= track.lien %>"><%= track.title %></span>
+							<a href="#" class="remove-my-song pull-right">x</a>
+							<hr class="hr_track" />
+						</li>
+						<% end %>
+					</ul>
+					</div>
+						<div class="panel-body">
+							<input id="play" type="submit" name="play">
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-			</form>
-
-	</div>
-
-</div>

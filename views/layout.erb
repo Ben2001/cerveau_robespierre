@@ -10,33 +10,18 @@
 </head>
 
 <body>
-	<div id="header" class="row">
-		<div class="col-md-3">
-			<img id="robespierre" src="../robespierre.jpg">
-		</div>
-		<div id="titre" class="col-md-6">
-			<h1><strong>Projet Robespierre</strong></h1>
-			  <hr id="hr_titre"/>
-		</div>
-	</div>
+	<%= erb :header %>
 	<div class="container">
 		<div class="row">
+			<%= erb :buttons %>
 			<%= erb :text_to_speech %>
 			<%= erb :player_audio %>
 		</div>
-	<!-- boutons d'action pour controler les mouvements du robot. Fonctionnalité en cours -->
-	<div id="boutons" class="row">
-		<div class="col-md-3">
-			<form class="inline_button" method="post" action="/doing">
-				<input type="hidden" value="usain_bolt" name="what" />
-				<input id="Demarrer" class="btn btn-default" type="submit" value="Let's doing Usain Bolt" />
-			</form>
-		</div>
-	</div>	
-</div>
+	</div>
 
 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script type="text/javascript" src="/js/robespierre.js"></script>
+
 </body>
 </html>

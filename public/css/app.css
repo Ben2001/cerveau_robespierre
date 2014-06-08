@@ -4,11 +4,9 @@
 }
 
 @font-face {
-    font-family: "BrannbollSmal";
     font-family: "USN_Stencil";
-    font-weight: bold;
-    src: url('../font/BrannbollSmal.ttf');
     src: url('../font/USN_Stencil.ttf' );
+    font-weight: bold;
 }
 
 /* Positionne la photo en arrière plan */
@@ -19,7 +17,6 @@ body {
        	  -o-background-size: cover;
              background-size: cover;
 }
-
 
 #header {
 	margin-top: 0px !important;
@@ -55,7 +52,7 @@ position: absolute 0px 0px;
 	text-decoration: underline;
 }
 
-.panel {
+.panel_custom {
 	border-top-left-radius: 20px !important; 
 	border-top-right-radius: 0px !important;
 	border-bottom-right-radius: 0px !important;  
@@ -78,7 +75,7 @@ h3 {
 }
 
 #tts_text_area {
-	max-height: 230px;
+	max-height: 100px;
 }
 
 
@@ -115,6 +112,10 @@ h3 {
 	display: inline;
 }
 
+.panel_buttons {
+	background-color: transparent;
+}
+
 /* Font-size de l'entête de la modal */
 #label_tweet {
 	font-size: 18px;
@@ -129,18 +130,12 @@ h3 {
 /*Player-Audio
 ------------*/
 
-/*Pour cacher la playlist JPlayer*/
-.jp-playlist {
-	display: none;
-}
-
 #sortable {
 	list-style-type: none;
 }
 
 #playlist {
 	background-color: #F3F2D4;
-	width: 261px;
 	max-height: 253px;
 	overflow: auto;
 	padding-bottom: 0px !important;
@@ -215,3 +210,5 @@ th {
 	text-align: center;
 	padding-bottom: 7px;
 }
+
+
