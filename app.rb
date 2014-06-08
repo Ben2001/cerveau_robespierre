@@ -1,3 +1,5 @@
+# coding: utf-8
+
 require 'bundler'
 Bundler.require
 require 'sinatra'
@@ -8,7 +10,7 @@ require './model_tweet'
 require './track.rb'
 
 set :database, "sqlite3:///foo.sqlite3"
-enable :sessions #permet de stocker une variable dans une session et de pouvoir l'utiliser partout dans l'app
+enable :sessions
 
 uri = URI.parse(ENV["REDISTOGO_URL"])
 REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
@@ -48,13 +50,13 @@ end
 post "/say" do
   if params[:sentences]
     params[:sentences].each do |sentence|
-      `aplay "/home/ben/workspace/Robo-Nova/cerveau_robespierre/public/#{sentence}"`
+      `aplay "#{File.join(File.dirname(__FILE__), "public", sentence)}"`
     end
   end
   redirect to ('/')
 end
 
 post '/doing' do
-  `aplay "/home/ben/workspace/Robo-Nova/cerveau_robespierre/public/doing/usain_bolt.mp3"`
+  `aplay "#{File.join(File.dirname(__FILE__), "public", "doing" , "usain_bolt.mp3")}"`
   redirect to ('/')
 end

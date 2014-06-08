@@ -1,214 +1,214 @@
 @font-face {
-    font-family: "BrannbollFet";
-    src: url('../font/BrannbollFet.ttf');
+  font-family: "BrannbollFet";
+  src: url('../font/BrannbollFet.ttf');
 }
 
 @font-face {
-    font-family: "USN_Stencil";
-    src: url('../font/USN_Stencil.ttf' );
-    font-weight: bold;
+  font-family: "USN_Stencil";
+  src: url('../font/USN_Stencil.ttf' );
+  font-weight: bold;
 }
 
 /* Positionne la photo en arrière plan */
 body {
-	background: url(../studioB&W.jpg) no-repeat center center fixed; 
-  	 -webkit-background-size: cover;
-     	-moz-background-size: cover;
-       	  -o-background-size: cover;
-             background-size: cover;
+  background: url(../studioB&W.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #header {
-	margin-top: 0px !important;
-	background-color: #F3F2D4; 
-	margin-top: 25px;
-	margin-bottom: 25px;
+  margin-top: 0px !important;
+  background-color: #F3F2D4; 
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 #robespierre {
-position: absolute 0px 0px;
+  position: absolute 0px 0px;
 }
 
 #titre {
-	text-align: center;
-	font-family: "USN_Stencil", Helvetica, Arial, sans-serif;
-	color: #C30140;
+  text-align: center;
+  font-family: "USN_Stencil", Helvetica, Arial, sans-serif;
+  color: #C30140;
 }
 
 #titre h1 {
-	font-size: 44px !important;
+  font-size: 44px !important;
 }
 
 #hr_titre {
-	margin-left: -20px;
-	margin-right: -20px;
-	margin-top: -3px;
-	padding-left: -20px;
-	padding-right: -20px;
-	border-color: black !important;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -3px;
+  padding-left: -20px;
+  padding-right: -20px;
+  border-color: black !important;
 }
 
 #user_name {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .panel_custom {
-	border-top-left-radius: 20px !important; 
-	border-top-right-radius: 0px !important;
-	border-bottom-right-radius: 0px !important;  
-	border-bottom-left-radius: 0px !important;
-	background-color: #F3F2D4;
+  border-top-left-radius: 20px !important; 
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;  
+  border-bottom-left-radius: 0px !important;
+  background-color: #F3F2D4;
 }
 
 .panel-heading {
-	border-top-left-radius: 20px !important;
-	background-color: #73713D !important;
+  border-top-left-radius: 20px !important;
+  background-color: #73713D !important;
 }
 
 .panel-body {
-	background-color: #F3F2D4;
+  background-color: #F3F2D4;
 }
 
 h3 {
-	font-family: "BrannbollFet", Helvetica, Arial, sans-serif;
-	color: #F3F2D4 !important;
+  font-family: "BrannbollFet", Helvetica, Arial, sans-serif;
+  color: #F3F2D4 !important;
 }
 
 #tts_text_area {
-	max-height: 100px;
+  max-height: 100px;
 }
 
 
 /*Tweets
 ------*/
 
-/* Aligne le Search dans la colonne Tweet */ 
-#search_form {
-	margin-top: 10px;
-	margin-left: 14px;
-}
+  /* Aligne le Search dans la colonne Tweet */ 
+  #search_form {
+    margin-top: 10px;
+    margin-left: 14px;
+  }
 
-/* Crée la scrollbar de la colonne Tweet */
-#conteneur_tweet{
-	max-height: 200px;
-	padding-left: 20px;
-	padding-right: 20px;
-	overflow: auto;
+  /* Crée la scrollbar de la colonne Tweet */
+  #conteneur_tweet{
+    max-height: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: auto;
 
-}
+  }
 
-.hr_tweet {
-	margin-left: -20px;
-	margin-right: -20px;
-	margin-bottom: 8px; 
-	margin-top: -7px;
-	padding-left: -20px;
-	padding-right: -20px;
-	border-color: #B9B9B9 !important;
-}
+  .hr_tweet {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 8px; 
+    margin-top: -7px;
+    padding-left: -20px;
+    padding-right: -20px;
+    border-color: #B9B9B9 !important;
+  }
 
-/* aligne les bouttons en dessous de la colonne Tweets */
-.inline_button {
-	display: inline;
-}
+  /* aligne les bouttons en dessous de la colonne Tweets */
+  .inline_button {
+    display: inline;
+  }
 
-.panel_buttons {
-	background-color: transparent;
-}
+  .panel_buttons {
+    background-color: transparent;
+  }
 
-/* Font-size de l'entête de la modal */
-#label_tweet {
-	font-size: 18px;
-}
+  /* Font-size de l'entête de la modal */
+  #label_tweet {
+    font-size: 18px;
+  }
 
-/* Met en forme le contenu de la modal */
-#modal_content {
-	padding: 15px;
-}
-
-
-/*Player-Audio
-------------*/
-
-#sortable {
-	list-style-type: none;
-}
-
-#playlist {
-	background-color: #F3F2D4;
-	max-height: 253px;
-	overflow: auto;
-	padding-bottom: 0px !important;
-}
-
-#my-tracks {
-	list-style-type: none;
-	margin-bottom: -7px;
-	padding-top: 7px;
-}
-
-.hr_track{
-	margin-left: -40px;
-	margin-bottom: 7px;
-	margin-top: 7px;
-	border-color: #B9B9B9 !important;
-}
-
-.remove-my-song {
-	padding-right: 20px;
-}
+  /* Met en forme le contenu de la modal */
+  #modal_content {
+    padding: 15px;
+  }
 
 
-/*Votes
-------*/
+  /*Player-Audio
+  ------------*/
 
-#conteneur_vote {
-	height: 200px;
-	padding: 0px;
-	border-bottom: 1px #B9B9B9 solid;
-	text-align: center;
-}
+  #sortable {
+    list-style-type: none;
+  }
 
-.titre_colonnes {
-	padding-top: 10px;
-	font-weight: bold;
-}
+  #playlist {
+    background-color: #F3F2D4;
+    max-height: 253px;
+    overflow: auto;
+    padding-bottom: 0px !important;
+  }
 
-#colonne_vote_1 {
-	border-right: 2px #B9B9B9 solid;
-}
+  #my-tracks {
+    list-style-type: none;
+    margin-bottom: -7px;
+    padding-top: 7px;
+  }
 
-.hr_titre_vote{
-	margin-left: -15px;
-	margin-right: -15px;
-	margin-bottom: 7px;
-	margin-top: 7px;
-	border-color: #B9B9B9 !important;
-}
+  .hr_track{
+    margin-left: -40px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    border-color: #B9B9B9 !important;
+  }
 
-.hr_vote{
-	margin-left: -15px;
-	margin-right: -15px;
-	margin-bottom: 7px;
-	margin-top: 7px;
-	border-color: #B9B9B9 !important;
-}
+  .remove-my-song {
+    padding-right: 20px;
+  }
 
-.tableau_votes {
-	text-align: center;
-}
 
-.dernieres_div_tableau {
-	margin-bottom: 5px;
-}
+  /*Votes
+  ------*/
 
-#table_vote {
-	margin-top: 10px;
-}
+  #conteneur_vote {
+    height: 200px;
+    padding: 0px;
+    border-bottom: 1px #B9B9B9 solid;
+    text-align: center;
+  }
 
-th {
-	text-align: center;
-	padding-bottom: 7px;
-}
+  .titre_colonnes {
+    padding-top: 10px;
+    font-weight: bold;
+  }
+
+  #colonne_vote_1 {
+    border-right: 2px #B9B9B9 solid;
+  }
+
+  .hr_titre_vote{
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    border-color: #B9B9B9 !important;
+  }
+
+  .hr_vote{
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    border-color: #B9B9B9 !important;
+  }
+
+  .tableau_votes {
+    text-align: center;
+  }
+
+  .dernieres_div_tableau {
+    margin-bottom: 5px;
+  }
+
+  #table_vote {
+    margin-top: 10px;
+  }
+
+  th {
+    text-align: center;
+    padding-bottom: 7px;
+  }
 
 
