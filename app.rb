@@ -63,7 +63,6 @@ post "/say" do
 end
 
 post '/doing' do
-  #`aplay "#{File.join(File.dirname(__FILE__), "public", "doing" , "usain_bolt.mp3")}"`
-  Doing.send(params[:what])
+  Doing.new.send(params[:what])
   redirect to ('/')
 end
