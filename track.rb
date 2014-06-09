@@ -10,7 +10,7 @@ class Track < ActiveRecord::Base
   def self.create_track(input)
     content = no_special_caracters(input)
     title = content[0..80]
-:   `espeak -s 100 -v mb-fr1 "#{content}" -w "public/tracks/#{title}"`
+   `espeak -s 100 -v mb-fr1 "#{content}" -w "public/tracks/#{title}"`
     new_track = Track.new(title: title, lien: "tracks/#{title}")
     new_track.save
   end
