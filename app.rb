@@ -8,6 +8,7 @@ Dotenv.load
 require './model_vote'
 require './model_tweet'
 require './track.rb'
+require './doing'
 
 set :database, "sqlite3:///foo.sqlite3"
 enable :sessions
@@ -62,6 +63,7 @@ post "/say" do
 end
 
 post '/doing' do
-  `aplay "#{File.join(File.dirname(__FILE__), "public", "doing" , "usain_bolt.mp3")}"`
+  #`aplay "#{File.join(File.dirname(__FILE__), "public", "doing" , "usain_bolt.mp3")}"`
+  Doing.send(params[:what])
   redirect to ('/')
 end

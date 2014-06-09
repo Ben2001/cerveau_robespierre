@@ -1,4 +1,4 @@
 .bundle/
-public/tracks/
 .env
 *.sqlite3
+public/tracks
