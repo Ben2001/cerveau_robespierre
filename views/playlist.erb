@@ -1,32 +1,32 @@
 <div class="col-md-10 col-md-offset-1">
-	<div class="panel_custom panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">Player Audio</h3>
-		</div>
+  <div class="panel_custom panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Player Audio</h3>
+    </div>
 
-		<form method="post" action="/upload" enctype='multipart/form-data'> <!--multipart permet de dire au formulaire qu'il doit s'attendre à recevoir des fichiers binaires -->
-			<input type="file" name="file">
-			<input type="submit" >
-		</form>
+    <form method="post" action="/upload" enctype='multipart/form-data'> <!--multipart permet de dire au formulaire qu'il doit s'attendre à recevoir des fichiers binaires -->
+      <input type="file" name="file">
+      <input type="submit" value="upload file">
+    </form>
 
-		<div>
-			<form method="post" action="/say">
-				<div id="playlist" class="panel-body">
-					<ul id="my-tracks" class="my-playlist">
-						<% @tracks.each do |track| %>
-						<li>
-							<input type="checkbox" class="to-my-playlist" name="sentences[]" value="<%= track.lien%>"/>
-							<span class="my-song" data-lien="<%= track.lien %>"><%= track.title %></span>
-							<a href="#" class="remove-my-song pull-right">x</a>
-							<hr class="hr_track" />
-						</li>
-						<% end %>
-					</ul>
-					</div>
-						<div class="panel-body">
-							<input id="play" type="submit" name="play">
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+    <div>
+      <form method="post" action="/say">
+        <div id="playlist" class="panel-body">
+          <ul id="my-tracks" class="my-playlist">
+            <% @tracks.each do |track| %>
+              <li>
+            <input type="checkbox" class="to-my-playlist" name="sentences[]" value="<%= track.lien%>"/>
+            <span class="my-song" data-lien="<%= track.lien %>"><%= track.title %></span>
+            <a href="#" class="remove-my-song pull-right">x</a>
+            <hr class="hr_track" />
+            </li>
+          <% end %>
+          </ul>
+        </div>
+        <div class="panel-body">
+          <input id="play" type="submit" value="Play">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
