@@ -1,0 +1,4 @@
+.bundle/
+public/tracks/
+.env
+*.sqlite3
