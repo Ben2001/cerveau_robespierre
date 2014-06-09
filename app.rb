@@ -25,6 +25,11 @@ get '/' do
   erb :twitter
 end
 
+get '/fresh_tweets' do
+  @tweets = tweets
+  erb :tweets, layout: false
+end
+
 post '/' do
   input = params[:input] || params[:tweet].to_s
   if input
