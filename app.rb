@@ -8,7 +8,7 @@ Dotenv.load
 require './model_vote'
 require './model_tweet'
 require './track.rb'
-require './doing'
+require './robot'
 
 set :database, "sqlite3:///foo.sqlite3"
 enable :sessions
@@ -63,6 +63,6 @@ post "/say" do
 end
 
 post '/doing' do
-  Doing.new.send(params[:what])
+  Robot.new.send(params[:what])
   redirect to ('/')
 end

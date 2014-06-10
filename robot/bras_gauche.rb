@@ -10,14 +10,8 @@ require 'net/http'
 #
 # /p pour un hello simple...
 
-#bras droit
-# angle lever 20 ->  100 repos 20
-# rotation 90 -> 160 repos 90
-# coude 150 -> 60 repos 150
-# main 0 -> 180
 
-
-class Doing
+class BrasGauche
   BRAS="192.168.2.178"
   attr_reader :delay, :appel_moteur
 
@@ -73,6 +67,7 @@ class Doing
   end
 
   def call_bras(uri)
+    puts uri
     response = Net::HTTP.get("#{BRAS}", uri)
     puts response
   end
