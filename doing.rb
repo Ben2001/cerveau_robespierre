@@ -1,5 +1,6 @@
 require 'net/http'
 
+#bras gauche
 # angle lever 158 ->  60 repos 158
 # rottion 20 -> 160 repos 90
 # coude 20 -> 125 repos 20
@@ -8,6 +9,12 @@ require 'net/http'
 # sur 3 charvec - entre. - temps en millisecond sur 4 chiffres - 3 char etapes.
 #
 # /p pour un hello simple...
+
+#bras droit
+# angle lever 20 ->  100 repos 20
+# rotation 90 -> 160 repos 90
+# coude 150 -> 60 repos 150
+# main 0 -> 180
 
 
 class Doing
