@@ -13,3 +13,4 @@ Il faut ensuite ajouter la voix fr dans le repertoire mbrola:
 `sudo mkdir /usr/share/mbrola/voices`
 `sudo cp fr1 /usr/share/mbrola/voices/`
 
+Le fichier /public/script_demarrage est à mettre dans /etc/rc.local et permet de lancer le serveur au démarrage de la machine
