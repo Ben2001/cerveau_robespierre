@@ -1,0 +1,12 @@
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+printf "My IP adress is %s\n" "$_IP"
+fi
+
+if [ -f /home/robespierre/workspace/cerveau_robespierre/config.ru ]; then
+  printf "Starting Robespierre..."
+  cd /home/robespierre/workspace/cerveau_robespierre
+  usr/local/bin/rackup -o 0.0.0.0 -p 9393 2>/dev/null 1>&2 &
+fi
+
+exit 0
