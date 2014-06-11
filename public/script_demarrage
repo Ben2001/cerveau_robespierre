@@ -1,7 +1,3 @@
-_IP=$(hostname -I) || true
-if [ "$_IP" ]; then
-printf "My IP adress is %s\n" "$_IP"
-fi
 
 if [ -f /home/robespierre/workspace/cerveau_robespierre/config.ru ]; then
   printf "Starting Robespierre..."
