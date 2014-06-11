@@ -12,7 +12,7 @@ require 'net/http'
 
 
 class BrasGauche
-  BRAS="192.168.2.178"
+  BRAS="10.0.0.31"
   attr_reader :delay, :appel_moteur
 
   def initialize

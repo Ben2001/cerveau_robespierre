@@ -9,7 +9,7 @@ require 'net/http'
 
 # Need to adapt
 class BrasDroit
-  BRAS="192.168.2.178"
+  BRAS="10.0.0.32"
   attr_reader :delay, :appel_moteur
 
   def initialize
