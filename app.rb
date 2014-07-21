@@ -66,3 +66,9 @@ post '/doing' do
   Robot.new.send(params[:what])
   redirect to ('/')
 end
+
+post '/sort_url' do
+  params[:tracks].each do |index, track|
+    Track.find_by(title: track["title"]).update position: index
+  end
+end
