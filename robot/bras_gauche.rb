@@ -1,6 +1,7 @@
 require 'net/http'
 
 #bras gauche
+# IP Fixe: 10.0.0.31
 # angle lever 158 ->  60 repos 158
 # rottion 20 -> 160 repos 90
 # coude 20 -> 125 repos 20
@@ -12,7 +13,7 @@ require 'net/http'
 
 
 class BrasGauche
-  BRAS="192.168.2.178"
+  BRAS="10.0.0.31"
   attr_reader :delay, :appel_moteur
 
   def initialize
@@ -69,6 +70,7 @@ class BrasGauche
   def call_bras(uri)
     puts uri
     response = Net::HTTP.get("#{BRAS}", uri)
+    # response = `curl http://10.0.0.31`
     puts response
   end
 end
