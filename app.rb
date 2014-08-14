@@ -9,6 +9,7 @@ require './model_vote'
 require './model_tweet'
 require './track.rb'
 require './robot'
+require 'pry'
 
 set :database, "sqlite3:///foo.sqlite3"
 enable :sessions
@@ -44,7 +45,7 @@ post '/upload' do
     File.open("public/tracks/#{params[:file][:filename]}", "wb") do |f|
       f.write(params[:file][:tempfile].read)
     end
-    Track.create_track(params[:file][:filename])
+    Track.create_audio_file(params[:file][:filename])
   end
   redirect to ('/')
 end
@@ -54,9 +55,9 @@ post '/remove_track' do
 end
 
 post "/say" do
-  if params[:sentences]
-    params[:sentences].each do |sentence|
-      `aplay "#{File.join(File.dirname(__FILE__), "public", sentence)}"`
+  if params[:audio_files]
+    params[:audio_files].each do |audio_file|
+     `aplay "#{File.join(File.dirname(__FILE__), "public", audio_file)}"` #aplay ne lit pas les mp3
     end
   end
   redirect to ('/')

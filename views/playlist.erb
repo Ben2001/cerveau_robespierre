@@ -15,7 +15,7 @@
           <ul id="my-tracks" class="my-playlist">
             <% @tracks.each do |track| %>
               <li>
-            <input type="checkbox" class="to-my-playlist" name="sentences[]" value="<%= track.lien%>"/>
+            <input type="checkbox" class="to-my-playlist" name="audio_files[]" value="<%= track.lien%>"/>
             <span class="my-song" data-lien="<%= track.lien %>"><%= track.title %></span>
             <a href="#" class="remove-my-song pull-right">x</a>
             <hr class="hr_track" />

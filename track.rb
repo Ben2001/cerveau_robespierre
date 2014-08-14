@@ -26,6 +26,12 @@ class Track < ActiveRecord::Base
    gsub("#", "hachetague ").
    gsub(/ http:\/\/[^ ]*/, "").
    gsub(/[\\$°_"{}\]\[`~+,:\/;=?#|'<>.^*()%!-]/, "")
- end
+  end
+
+  def self.create_audio_file(input)
+    title = input[0..140]
+    new_track = Track.new(title: title, lien: "tracks/#{input}")        
+    new_track.save
+  end
 
 end
