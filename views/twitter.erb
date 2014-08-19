@@ -7,29 +7,7 @@
       <%= erb :tweets %>
       <div class="panel-body"><!--3ème panel-body-->
         <input id="envoyer" class="btn btn-default" type="submit" value="Envoyer" />
-      </form>
-      <!-- Button trigger modal -->
-      <button class="inline_button btn btn-primary" data-toggle="modal" data-target="#twitter-modal">Twitter</button>
-    </div><!-- ferme le 3ème panel-body -->
-
-    <!-- Modal -->
-    <div class="modal fade twitter-modal" id="twitter-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Ecrivez un Tweet</h4>
-          </div>
-          <form role="form" method="post" action="/update_statut">
-            <div class="modal-body">
-              <input type="text" name="input" class="form-control" id="type_a_tweet" placeholder="Votre Tweet...">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Poster</button>
-            </div>
-          </form>
-        </div>
       </div>
-    </div>
-  </div><!--ferme le panel-->
-</div><!--ferme le col-md-3-->
+    </form>
+  </div>
+</div>
