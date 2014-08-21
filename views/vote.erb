@@ -1,0 +1,48 @@
+<div class="col-md-10 col-md-offset-1">
+	<div class="panel_custom panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Votes</h3>
+		</div>
+		<div id="conteneur_vote" class="panel-body">
+			<table id="table_vote" class="colonne col-md-12">
+				<tr>
+					<th>Morceaux</th>
+					<th>Compteur</th>
+				</tr>
+				<tr>
+					<td><% if @redis.get("demarrer") == "off" %>
+						<input type="text" id="hash1" class="songhashtag" size="10" value="<%= @redis.keys("PSG")[0] %>"/>
+						<% else %>
+						<input type="text" id="hash1" readonly="true" class="songhashtag" size="10" value="<%= @redis.keys("PSG")[0] %>"/>
+						<% end %>
+					</td>
+					<td><%= @redis.get "PSG" %></td>
+				</tr>
+				<tr>
+					<td><% if @redis.get("demarrer") == "off" %>
+						<input type="text" id="hash2" class="songhashtag" size="10" value="<%= @redis.keys("obama")[0] %>"/>
+						<% else %>
+						<input type="text" id="hash2" readonly="true" class="songhashtag" size="10" value="<%= @redis.keys("obama")[0] %>"/>
+						<% end %>
+					</td>
+					<td><%= @redis.get "obama" %></td>
+				</tr>
+				<tr>
+					<td><% if @redis.get("demarrer") == "off" %>
+						<input type="text" id="hash3" class="songhashtag" size="10" value="<%= @redis.keys("justin bieber")[0] %>"/>
+						<% else %>
+						<input type="text" id="hash3" class="songhashtag" readonly="true" size="10" value="<%= @redis.keys("justin bieber")[0] %>"/>
+						<% end %>
+					</td>
+					<td><%= @redis.get "justin bieber" %></td>
+				</tr>
+			</table>
+		</div>
+		<div class="panel-body">
+			<button id="stop_and_go_votes" class="inline_button btn <%= @redis.get("demarrer") == "off" ? "btn-success" : "btn-danger" %>"> <%= @redis.get("demarrer") == "off" ? "Démarrer" : "Arreter" %> </button>
+			<button id="remise_a_zero" class=" btn btn-danger" > remettre à zéro </button>
+		</div>
+	</div>
+</div>
+
+

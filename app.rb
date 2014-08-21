@@ -9,6 +9,7 @@ require './model_vote'
 require './model_tweet'
 require './track.rb'
 require './robot'
+# require './systeme_de_vote'
 require 'pry'
 
 set :database, "sqlite3:///foo.sqlite3"
@@ -21,13 +22,21 @@ def tweets
   REDIS.keys("robonova:tweet:*").map { |x| JSON.parse REDIS.get x }
 end
 
+def remettre_a_zero(redis)
+  redis.set "PSG", 0
+  redis.set "obama", 0
+  redis.set "justin bieber", 0
+end
+
 get '/' do
+  @redis = Redis.new
   @tracks = Track.order("position")
   @tweets = tweets
   erb :twitter
 end
 
 get '/fresh_tweets' do
+  @redis = Redis.new
   @tweets = tweets
   erb :tweets, layout: false
 end
@@ -58,9 +67,9 @@ post "/say" do
   if params[:audio_files]
     params[:audio_files].each do |audio_file|
      `aplay "#{File.join(File.dirname(__FILE__), "public", audio_file)}"` #aplay ne lit pas les mp3
-    end
-  end
-  redirect to ('/')
+   end
+ end
+ redirect to ('/')
 end
 
 post '/doing' do
@@ -72,4 +81,34 @@ post '/sort_url' do
   params[:tracks].each do |index, track|
     Track.find_by(title: track["title"]).update position: index
   end
+end
+
+post '/vote' do
+  #puts params.inspect
+  #TODO ici params[:hash1] params[:hash2] params[:hash3] pour le watcher
+  redis = Redis.new
+  if redis.get("demarrer") == "off"
+    remettre_a_zero(redis)
+    redis.set "demarrer", "on"
+    return 'Arrêter'
+  else
+    redis.set "demarrer", "off"
+    return 'Démarrer'
+  end
+end
+
+get "/update_vote" do
+  redis = Redis.new
+  if redis.get("demarrer") == "off"
+    "stop polling".to_json
+  else
+    {vote_1: redis.get('PSG'),
+      vote_2: redis.get('obama'),
+      vote_3: redis.get('justin bieber')}.to_json
+  end
+end
+
+post "/remettre_a_zero" do
+  redis = Redis.new
+  remettre_a_zero(redis)
 end
