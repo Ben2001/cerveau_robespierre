@@ -11,30 +11,30 @@
 				</tr>
 				<tr>
 					<td><% if @redis.get("demarrer") == "off" %>
-						<input type="text" id="hash1" class="songhashtag" size="10" value="<%= @redis.keys("PSG")[0] %>"/>
+						<input type="text" id="hash1" class="songhashtag" size="10"/>
 						<% else %>
-						<input type="text" id="hash1" readonly="true" class="songhashtag" size="10" value="<%= @redis.keys("PSG")[0] %>"/>
+						<input type="text" id="hash1" readonly="true" class="songhashtag" size="10"/>
 						<% end %>
 					</td>
-					<td><%= @redis.get "PSG" %></td>
+					<td id="vote_1"><%= @redis.hget "votes", "counter1" %></td>
 				</tr>
 				<tr>
 					<td><% if @redis.get("demarrer") == "off" %>
-						<input type="text" id="hash2" class="songhashtag" size="10" value="<%= @redis.keys("obama")[0] %>"/>
+						<input type="text" id="hash2" class="songhashtag" size="10"/>
 						<% else %>
-						<input type="text" id="hash2" readonly="true" class="songhashtag" size="10" value="<%= @redis.keys("obama")[0] %>"/>
+						<input type="text" id="hash2" readonly="true" class="songhashtag" size="10"/>
 						<% end %>
 					</td>
-					<td><%= @redis.get "obama" %></td>
+					<td id="vote_2"><%= @redis.hget "votes", "counter2" %></td>
 				</tr>
 				<tr>
 					<td><% if @redis.get("demarrer") == "off" %>
-						<input type="text" id="hash3" class="songhashtag" size="10" value="<%= @redis.keys("justin bieber")[0] %>"/>
+						<input type="text" id="hash3" class="songhashtag" size="10"/>
 						<% else %>
-						<input type="text" id="hash3" class="songhashtag" readonly="true" size="10" value="<%= @redis.keys("justin bieber")[0] %>"/>
+						<input type="text" id="hash3" class="songhashtag" readonly="true" size="10"/>
 						<% end %>
 					</td>
-					<td><%= @redis.get "justin bieber" %></td>
+					<td id="vote_3"><%= @redis.hget "votes", "counter3" %></td>
 				</tr>
 			</table>
 		</div>

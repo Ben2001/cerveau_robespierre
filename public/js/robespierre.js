@@ -19,8 +19,8 @@ refreshVotes = function(){
 			$('#vote_2').text(votes.vote_2)
 			$('#vote_3').text(votes.vote_3)
 			setTimeout(refreshVotes,5000)
-		};
-	});
+		}
+	})
 };
 
 $(document).ready(function(){
@@ -77,6 +77,6 @@ $(document).ready(function(){
 			$('#vote_2').text(0)
 			$('#vote_3').text(0)
 		})
-	})
+	});
 
 });

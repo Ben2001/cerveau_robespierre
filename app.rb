@@ -9,7 +9,6 @@ require './model_vote'
 require './model_tweet'
 require './track.rb'
 require './robot'
-# require './systeme_de_vote'
 require 'pry'
 
 set :database, "sqlite3:///foo.sqlite3"
@@ -23,20 +22,21 @@ def tweets
 end
 
 def remettre_a_zero(redis)
-  redis.set "PSG", 0
-  redis.set "obama", 0
-  redis.set "justin bieber", 0
+  redis = REDIS
+  redis.hset "votes", "counter1", 0
+  redis.hset "votes", "counter2", 0
+  redis.hset "votes", "counter3", 0
 end
 
 get '/' do
-  @redis = Redis.new
+  @redis = REDIS
   @tracks = Track.order("position")
   @tweets = tweets
   erb :twitter
 end
 
 get '/fresh_tweets' do
-  @redis = Redis.new
+  @redis = REDIS
   @tweets = tweets
   erb :tweets, layout: false
 end
@@ -84,11 +84,12 @@ post '/sort_url' do
 end
 
 post '/vote' do
-  #puts params.inspect
-  #TODO ici params[:hash1] params[:hash2] params[:hash3] pour le watcher
-  redis = Redis.new
+  redis = REDIS
   if redis.get("demarrer") == "off"
     remettre_a_zero(redis)
+    redis.hset "votes", "track1", "#{params[:hash1]}"
+    redis.hset "votes", "track2", "#{params[:hash2]}"
+    redis.hset "votes", "track3", "#{params[:hash3]}"
     redis.set "demarrer", "on"
     return 'Arrêter'
   else
@@ -98,17 +99,17 @@ post '/vote' do
 end
 
 get "/update_vote" do
-  redis = Redis.new
+  redis = REDIS
   if redis.get("demarrer") == "off"
     "stop polling".to_json
   else
-    {vote_1: redis.get('PSG'),
-      vote_2: redis.get('obama'),
-      vote_3: redis.get('justin bieber')}.to_json
+      {vote_1: redis.hget("votes", "counter1"),
+      vote_2: redis.hget("votes", "counter2"),
+      vote_3: redis.hget("votes", "counter3")}.to_json
   end
 end
 
 post "/remettre_a_zero" do
-  redis = Redis.new
+  redis = REDIS
   remettre_a_zero(redis)
 end
