@@ -14,29 +14,33 @@ require 'pry'
 set :database, "sqlite3:///foo.sqlite3"
 enable :sessions
 
-uri = URI.parse(ENV["REDISTOGO_URL"])
-REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+uri_tweets = URI.parse(ENV["REDISTOGO_URL_TWEETS"])
+REDIS_TWEETS = Redis.new(:host => uri_tweets.host, :port => uri_tweets.port, :password => uri_tweets.password)
+
+uri_votes = URI.parse(ENV["REDISTOGO_URL_VOTES"])
+REDIS_VOTES = Redis.new(:host => uri_votes.host, :port => uri_votes.port, :password => uri_votes.password)
 
 def tweets
-  REDIS.keys("robonova:tweet:*").map { |x| JSON.parse REDIS.get x }
+  REDIS_TWEETS.keys("robonova:tweet:*").map { |x| JSON.parse REDIS_TWEETS.get x }
 end
 
 def remettre_a_zero(redis)
-  redis = REDIS
+  redis = REDIS_VOTES
   redis.hset "votes", "counter1", 0
   redis.hset "votes", "counter2", 0
   redis.hset "votes", "counter3", 0
 end
 
 get '/' do
-  @redis = REDIS
+  @redis = REDIS_TWEETS
+  @redis_votes = REDIS_VOTES
   @tracks = Track.order("position")
   @tweets = tweets
   erb :twitter
 end
 
 get '/fresh_tweets' do
-  @redis = REDIS
+  @redis = REDIS_TWEETS
   @tweets = tweets
   erb :tweets, layout: false
 end
@@ -84,7 +88,7 @@ post '/sort_url' do
 end
 
 post '/vote' do
-  redis = REDIS
+  redis = REDIS_VOTES
   if redis.get("demarrer") == "off"
     remettre_a_zero(redis)
     redis.hset "votes", "track1", "#{params[:hash1]}"
@@ -99,7 +103,7 @@ post '/vote' do
 end
 
 get "/update_vote" do
-  redis = REDIS
+  redis = REDIS_VOTES
   if redis.get("demarrer") == "off"
     "stop polling".to_json
   else
@@ -110,6 +114,6 @@ get "/update_vote" do
 end
 
 post "/remettre_a_zero" do
-  redis = REDIS
+  redis = REDIS_VOTES
   remettre_a_zero(redis)
 end

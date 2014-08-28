@@ -10,36 +10,36 @@
 					<th>Compteur</th>
 				</tr>
 				<tr>
-					<td><% if @redis.get("demarrer") == "off" %>
+					<td><% if @redis_votes.get("demarrer") == "off" %>
 						<input type="text" id="hash1" class="songhashtag" size="10"/>
 						<% else %>
 						<input type="text" id="hash1" readonly="true" class="songhashtag" size="10"/>
 						<% end %>
 					</td>
-					<td id="vote_1"><%= @redis.hget "votes", "counter1" %></td>
+					<td id="vote_1"><%= @redis_votes.hget "votes", "counter1" %></td>
 				</tr>
 				<tr>
-					<td><% if @redis.get("demarrer") == "off" %>
+					<td><% if @redis_votes.get("demarrer") == "off" %>
 						<input type="text" id="hash2" class="songhashtag" size="10"/>
 						<% else %>
 						<input type="text" id="hash2" readonly="true" class="songhashtag" size="10"/>
 						<% end %>
 					</td>
-					<td id="vote_2"><%= @redis.hget "votes", "counter2" %></td>
+					<td id="vote_2"><%= @redis_votes.hget "votes", "counter2" %></td>
 				</tr>
 				<tr>
-					<td><% if @redis.get("demarrer") == "off" %>
+					<td><% if @redis_votes.get("demarrer") == "off" %>
 						<input type="text" id="hash3" class="songhashtag" size="10"/>
 						<% else %>
 						<input type="text" id="hash3" class="songhashtag" readonly="true" size="10"/>
 						<% end %>
 					</td>
-					<td id="vote_3"><%= @redis.hget "votes", "counter3" %></td>
+					<td id="vote_3"><%= @redis_votes.hget "votes", "counter3" %></td>
 				</tr>
 			</table>
 		</div>
 		<div class="panel-body">
-			<button id="stop_and_go_votes" class="inline_button btn <%= @redis.get("demarrer") == "off" ? "btn-success" : "btn-danger" %>"> <%= @redis.get("demarrer") == "off" ? "Démarrer" : "Arreter" %> </button>
+			<button id="stop_and_go_votes" class="inline_button btn <%= @redis_votes.get("demarrer") == "off" ? "btn-success" : "btn-danger" %>"> <%= @redis_votes.get("demarrer") == "off" ? "Démarrer" : "Arreter" %> </button>
 			<button id="remise_a_zero" class=" btn btn-danger" > remettre à zéro </button>
 		</div>
 	</div>
