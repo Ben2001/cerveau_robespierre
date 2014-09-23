@@ -5,23 +5,35 @@ Bundler.require
 require 'sinatra'
 require 'dotenv'
 Dotenv.load
-require './model_vote'
 require './model_tweet'
-require './track.rb'
+require './track'
 require './robot'
 require 'pry'
-
-set :database, "sqlite3:///foo.sqlite3"
+require 'open-uri'
+set :server, 'webrick'
+set :database, "sqlite3:foo.sqlite3"
 enable :sessions
 
-uri_tweets = URI.parse(ENV["REDISTOGO_URL_TWEETS"])
-REDIS_TWEETS = Redis.new(:host => uri_tweets.host, :port => uri_tweets.port, :password => uri_tweets.password)
+  def internet_connection?
+    begin
+      true if open("http://www.google.com/")
+    rescue
+      false
+    end
+  end
 
-uri_votes = URI.parse(ENV["REDISTOGO_URL_VOTES"])
-REDIS_VOTES = Redis.new(:host => uri_votes.host, :port => uri_votes.port, :password => uri_votes.password)
+helpers do
+  alias :internet_connection? :internet_connection?
+end
 
-def tweets
-  REDIS_TWEETS.keys("robonova:tweet:*").map { |x| JSON.parse REDIS_TWEETS.get x }
+if internet_connection?
+  uri_tweets = URI.parse(ENV["REDISTOGO_URL_TWEETS"])
+  REDIS_TWEETS = Redis.new(:host => uri_tweets.host, :port => uri_tweets.port, :password => uri_tweets.password)
+  uri_votes = URI.parse(ENV["REDISTOGO_URL_VOTES"])
+  REDIS_VOTES = Redis.new(:host => uri_votes.host, :port => uri_votes.port, :password => uri_votes.password)
+  def tweets
+    REDIS_TWEETS.keys("robonova:tweet:*").map { |x| JSON.parse REDIS_TWEETS.get x }
+  end
 end
 
 def remettre_a_zero(redis)
@@ -32,11 +44,16 @@ def remettre_a_zero(redis)
 end
 
 get '/' do
-  @redis = REDIS_TWEETS
-  @redis_votes = REDIS_VOTES
-  @tracks = Track.order("position")
-  @tweets = tweets
-  erb :twitter
+  if internet_connection?
+    @redis = REDIS_TWEETS
+    @redis_votes = REDIS_VOTES
+    @tracks = Track.order("position")
+    @tweets = tweets
+    erb :twitter
+  else
+    @tracks = Track.order("position")
+    erb :playlist
+  end
 end
 
 get '/fresh_tweets' do
@@ -107,13 +124,13 @@ get "/update_vote" do
   if redis.get("demarrer") == "off"
     "stop polling".to_json
   else
-      {vote_1: redis.hget("votes", "counter1"),
+    {vote_1: redis.hget("votes", "counter1"),
       vote_2: redis.hget("votes", "counter2"),
       vote_3: redis.hget("votes", "counter3")}.to_json
+    end
   end
-end
 
-post "/remettre_a_zero" do
-  redis = REDIS_VOTES
-  remettre_a_zero(redis)
-end
+  post "/remettre_a_zero" do
+    redis = REDIS_VOTES
+    remettre_a_zero(redis)
+  end

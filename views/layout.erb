@@ -11,11 +11,13 @@
 	<%= erb :header %>
 	<div class="container">
 		<div class="row">
-			<%= erb :buttons %>
-			<%= erb :text_to_speech %>
-			<%= erb :playlist %>
-			<%= erb :twitter %>
-			<%= erb :vote %>
+				<%= erb :buttons %>
+				<%= erb :text_to_speech %>
+				<%= erb :playlist %>
+			<% if internet_connection? %> 
+				<%= erb :twitter %>
+				<%= erb :vote %>
+			<% end %>
 		</div>
 	</div>
 
