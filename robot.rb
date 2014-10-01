@@ -4,7 +4,8 @@ require './robot/bras_gauche'
 class Robot
 
   def initialize
-    @pieces = [BrasDroit.new, BrasGauche.new]
+    @pieces = [BrasGauche.new]
+    # @pieces = [BrasDroit.new, BrasGauche.new]
   end
 
   def hello
@@ -17,6 +18,18 @@ class Robot
 
   def reset
     execute_move('reset')
+  end
+
+  def kung_fu
+    execute_move('kung_fu')
+  end
+
+  def masturbation
+    execute_move('masturbation')
+  end
+
+  def pasvoir
+    execute_move('pasvoir')
   end
 
   private

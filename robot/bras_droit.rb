@@ -28,17 +28,17 @@ class BrasDroit
   end
 
   def hello
-    call_bras("/a020-090-090-090-#{delay}-#{appel_moteur}")
+    call_bras("/a090-020-090-090-090-#{delay}-#{appel_moteur}")
     @delay = "0500"
     5.times {
-      call_bras("/a070-150-090-090-#{delay}-#{appel_moteur}")
-      call_bras("/a070-150-060-000-#{delay}-#{appel_moteur}")
+      call_bras("/a090-070-150-090-090-#{delay}-#{appel_moteur}")
+      call_bras("/a090-070-150-060-000-#{delay}-#{appel_moteur}")
     }
     reset
   end
 
   def reset
-    call_bras("/a020-090-150-090-#{delay}-#{appel_moteur}")
+    call_bras("/a090-020-090-150-090-#{delay}-#{appel_moteur}")
   end
 
   private
