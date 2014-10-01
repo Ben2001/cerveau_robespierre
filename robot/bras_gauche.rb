@@ -50,6 +50,7 @@ class BrasGauche
   end
 
   def reset
+    delay = "1000"
     call_bras("/a090-158-090-020-000-#{delay}-#{appel_moteur}")
   end
 
@@ -77,8 +78,8 @@ class BrasGauche
   def masturbation
     @delay = '0350'
     5.times {
-    call_bras("/a130-140-125-110-180-#{delay}-#{appel_moteur}")
-    call_bras("/a130-140-160-100-180-#{delay}-#{appel_moteur}")
+      call_bras("/a130-140-125-110-180-#{delay}-#{appel_moteur}")
+      call_bras("/a130-140-160-100-180-#{delay}-#{appel_moteur}")
     }
     reset
   end
@@ -86,6 +87,22 @@ class BrasGauche
   def pasvoir
     call_bras("/a185-158-120-110-180-#{delay}-#{appel_moteur}")
     sleep 2
+    reset
+  end
+
+  def ussain_bolt
+    call_bras("/a225-130-100-040-180-#{delay}-#{appel_moteur}")
+    sleep 2
+    reset
+  end
+
+  def garde_a_vous
+    delay = "1000"
+    call_bras("/a090-065-035-120-000-#{delay}-#{appel_moteur}")
+    sleep 1.5
+    delay = "0250"
+    call_bras("/a090-055-035-090-000-#{delay}-#{appel_moteur}")
+    sleep 0.2
     reset
   end
 

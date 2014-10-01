@@ -32,6 +32,14 @@ class Robot
     execute_move('pasvoir')
   end
 
+  def ussain_bolt
+    execute_move('ussain_bolt')
+  end
+
+  def garde_a_vous
+    execute_move('garde_a_vous')
+  end
+
   private
 
   def execute_move(move)
